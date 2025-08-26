@@ -1,0 +1,33 @@
+CREATE TABLE authors (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL
+);
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80) NOT NULL
+);
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  author_id INT NOT NULL,
+  category_id INT NOT NULL,
+  isbn VARCHAR(20),
+  published_year INT,
+  total_copies INT NOT NULL,
+  available_copies INT NOT NULL,
+  description VARCHAR(500)
+);
+CREATE TABLE members (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(120) NOT NULL
+);
+CREATE TABLE loans (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  book_id INT NOT NULL,
+  member_id INT NOT NULL,
+  borrowed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  due_at TIMESTAMP NOT NULL,
+  returned_at TIMESTAMP NULL,
+  fine_amount DECIMAL(10,2) DEFAULT 0.00
+);
